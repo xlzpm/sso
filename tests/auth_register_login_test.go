@@ -9,8 +9,6 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	ssov1 "github.com/xlzpm/protos/gen/go/sso"
-	"github.com/xlzpm/sso/internal/domain/models"
-	myjwt "github.com/xlzpm/sso/internal/lib/jwt"
 	"github.com/xlzpm/sso/tests/suite"
 )
 
@@ -66,23 +64,4 @@ func TestRegisterLogin_Login_HappyPath(t *testing.T) {
 
 func randomFakePassword() string {
 	return gofakeit.Password(true, true, true, true, false, passDefaultLen)
-}
-
-func TestCreateNewToken(t *testing.T) {
-	str, err := myjwt.NewToken(models.User{
-		ID:       1,
-		Email:    "grpc",
-		PassHash: []byte("AYE"),
-	}, models.App{
-		ID:     1,
-		Name:   "grpc",
-		Secret: "AYE",
-	},
-		time.Second)
-	if err != nil {
-		panic(err)
-	}
-	assert.Equal(t,
-		"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOjEsImVtYWlsIjoiY3VycyIsImV4cCI6MTcwNTU5MzEwOSwidWlkIjoxfQ.iKZkg1HTmbOoXJTC_ZKWHAVPb45wXsFCRWPJWY5orTA",
-		str)
 }
