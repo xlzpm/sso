@@ -94,7 +94,7 @@ func validateLogin(req *ssov1.LoginRequest) error {
 	}
 
 	if req.GetAppId() == emptyValue {
-		return status.Error(codes.InvalidArgument, "app_id is requirec")
+		return status.Error(codes.InvalidArgument, "app_id is required")
 	}
 
 	return nil

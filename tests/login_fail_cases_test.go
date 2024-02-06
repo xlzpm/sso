@@ -52,7 +52,7 @@ func TestLogin_FailCase(t *testing.T) {
 			email:       gofakeit.Email(),
 			password:    randomFakePassword(),
 			appID:       emptyAppID,
-			expectedErr: "app_id is requirec",
+			expectedErr: "app_id is required",
 		},
 	}
 
